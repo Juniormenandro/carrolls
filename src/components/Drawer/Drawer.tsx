@@ -63,7 +63,7 @@ const Drawer: React.FC = () => {
           </div>
 
           <Link href="/netrevenue"
-            className="mt-10"
+            className="mt-4"
             onClick={toggleDrawer} >
              <Button type={"button"} isLoading={false}  >
               <h1 className=" p-1  bg-cyan-50  font-semibold text-blue-500 rounded-lg">
@@ -71,7 +71,14 @@ const Drawer: React.FC = () => {
               </h1>
              </Button>
           </Link>
-          
+
+          <Link href="/booking" onClick={toggleDrawer}>
+            <Button type={"button"} isLoading={false} >
+              <h1 className=" p-1  bg-cyan-50  font-semibold text-blue-500 rounded-lg">
+              BOOKING
+              </h1>
+            </Button>
+          </Link>
           
           <Link href="/customers" onClick={toggleDrawer}>
             <Button type={"button"} isLoading={false} >

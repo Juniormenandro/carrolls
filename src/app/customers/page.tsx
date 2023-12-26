@@ -182,14 +182,6 @@ export default function Page() {
         <h1>CUSTOMERS</h1>
       </div>
       <div className="flex justify-center text-center">
-       
-        <Link className="mt-10 -z-1" href="/booking" >
-          <button type={"button"} >
-            <h1 className=" p-2 bg-white border-4 border-blue-500 font-semibold text-blue-500 rounded-lg">
-              BOOKING
-            </h1>
-          </button>
-        </Link>
         <div className="mt-10 ml-2 ">
         <button className=' p-2 bg-white border-4 text-blue-500  border-blue-500 font-semibold rounded-lg'
           onClick={() => setShowReturned(!showReturned)} type={'button'} >

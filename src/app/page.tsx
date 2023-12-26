@@ -132,7 +132,7 @@ return (
             {!bookingData.step && "Select your service:"}
             {bookingData.step === 1 && "Select your payment:"}
             {bookingData.step === 2 && "Select your time:"}
-            {bookingData.step === 3 && "Enter your name and phone number:"}
+            {bookingData.step === 3 && ""}
           </label>
           <div className="flex flex-col gap-4">
             <SelectionSteps

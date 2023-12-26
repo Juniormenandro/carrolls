@@ -132,6 +132,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
         content = (
           <form onSubmit={handleSubmit}>
             <label className="block mb-2">
+              <h1>Type Your Name:</h1>
               <input
                 key="nome"
                 style={{
@@ -144,10 +145,11 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
                 type="text"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                placeholder="NAME"
+                placeholder="type here..."
               />
             </label>
             <label className="block mb-2">
+              <h1>Enter Your Phone Number:</h1>
             <input
               style={{
                 width: '100%',
@@ -160,10 +162,11 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
               type="text"
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
-              placeholder="PHONE"
+              placeholder="type here..."
             />
             </label>
             <label className="block mb-2">
+              <h1>Enter your car's license plate number</h1>
             <input
               style={{
                 width: '100%',
@@ -176,7 +179,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
               type="text"
               value={placa}
               onChange={(e) => setPlaca(e.target.value)}
-              placeholder="NUMBER PLATE"
+              placeholder="type here..."
             />
             </label>
             
