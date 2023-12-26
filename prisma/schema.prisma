@@ -20,8 +20,7 @@ model servicos {
   selectedProductNane      String?
   selectedProdutPrice      String?
   
-  selectedModel            String?
-  selectedColor            String?
+
   selectedTime             String?
   selectedProductDefaultPrice String?
   rawPrice                 Int?
@@ -54,7 +53,7 @@ model clientes {
   servicos  servicos[]
   telefone  String             @unique
   email     String?
- 
+  placa     String             @unique
   Booking   Booking[]
 }
 

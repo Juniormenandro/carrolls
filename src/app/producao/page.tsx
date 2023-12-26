@@ -10,10 +10,9 @@ import { useRouter } from "next/navigation";
  
 
 interface servicos {
+  data: Date;
   clienteId: string;
-  selectedColor: ReactNode;
   selectedTime: ReactNode;
-  selectedModel: ReactNode;
   selectedPayment: ReactNode;
   selectedProdutPrice: ReactNode;
   selectedProductNane: ReactNode;
@@ -27,6 +26,7 @@ interface Cliente {
   id: string;
   nome: string;
   telefone: string;
+  placa: string;
   servicos: servicos[];
 };
 
@@ -147,15 +147,17 @@ useEffect(() => {
                 <div className='flex-1 justify-center w-1/2 '>
                   <div className=' w-full'>
                     <h2 className=' text-[17px] pb-[1px] border '>{servico.selectedProductNane}</h2>
-                    <h2 className=' text-[18px] border '>{servico.selectedProdutPrice}</h2>
                     <h2 className=' text-[18px] border '>{servico.selectedPayment}</h2>
+                    <h2 className=' text-[18px] border '>{servico.selectedProdutPrice}</h2>
                   </div>
                 </div>
                 <div className='flex-1 justify-center'>
                   <div className=' w-full'>
+                  <h2 className=' text-[18px] border '>{client.placa}</h2>
+                    <h2 className='text-[18px] border'>
+                      {new Date(servico.data).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}
+                    </h2>
                     <h2 className=' text-[18px] border '>{servico.selectedTime}</h2>
-                    <h2 className=' text-[18px] border '>{servico.carro}</h2>
-                    <h2 className=' text-[18px] border '>{servico.selectedColor}</h2>
                   </div>
                 </div>
               </div>

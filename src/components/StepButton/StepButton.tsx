@@ -8,12 +8,12 @@ type StepButtonProps = {
   selectedProductId: string;
   selectedTime: string;
   selectedPayment: string;
-  selectedModel:string;
-  selectedColor:string;
+
   setBookingData: (data: BookingType) => void;
   handleBuyProduct: (id: string, updatedData: any) => Promise<void>;
   nome: string; 
   telefone: string; 
+  placa: string;
   bookingData: BookingType;
   
 };
@@ -25,13 +25,14 @@ const StepButton: React.FC<StepButtonProps> = ({
   selectedProductId,
   selectedPayment,
   selectedTime,
-  selectedModel,
-  selectedColor,
+ nome,
+  telefone, 
+  placa,
+  bookingData,
   setBookingData,
   handleBuyProduct,
-  nome,
-  telefone, 
-  bookingData,
+ 
+ 
   
 }) => {
   const handleContinue = () => {
@@ -40,6 +41,7 @@ const StepButton: React.FC<StepButtonProps> = ({
         ...bookingData,
         nome,
         telefone,
+        placa,
         step: bookingData.step + 1,
       });
     } else {
@@ -75,7 +77,7 @@ const StepButton: React.FC<StepButtonProps> = ({
         <Button
           type="button"
           isLoading={false}
-          disabled={false}
+          disabled={!selectedPayment}
           onClick={handleContinue}
         >
           Continue
@@ -86,7 +88,7 @@ const StepButton: React.FC<StepButtonProps> = ({
         <Button
           type="button"
           isLoading={false}
-          disabled={!selectedPayment}
+          disabled={!selectedTime}
           onClick={handleContinue}
         >
           Continue
@@ -97,35 +99,14 @@ const StepButton: React.FC<StepButtonProps> = ({
         <Button
           type="button"
           isLoading={false}
-          disabled={!selectedTime}
-          onClick={handleContinue}
-        >
-          Continue
-        </Button>
-      )}
-
-      {step === 4 && (
-        <Button
-          type="button"
-          isLoading={false}
-          disabled={!selectedModel}
-          onClick={handleContinue}
-        >
-          Continue
-        </Button>
-      )}
-
-
-      {step === 5 && (
-        <Button
-          type="button"
-          isLoading={checkoutIsLoading}
-          disabled={!selectedColor}
+          disabled={false}
           onClick={finishBooking}
         >
-          Book
+         Book
         </Button>
       )}
+    
+
 <br/><br/>
 {step > 0 && (
         <Button

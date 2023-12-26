@@ -36,6 +36,7 @@ interface Booking {
 };
 
 interface Cliente {
+  placa: string;
   id: string;
   nome: string;
   telefone: string;
@@ -181,14 +182,7 @@ export default function Page() {
         <h1>CUSTOMERS</h1>
       </div>
       <div className="flex justify-center text-center">
-        <Link className="mt-10 mr-2 -z-1" href="/oldClients" >
-          <button type={"button"}  >
-            <h1 className=" p-2 bg-white border-4 border-blue-500 font-semibold text-blue-500 rounded-lg">
-              OLD-CUSTOMERS
-            </h1>
-          </button>
-        </Link>
-
+       
         <Link className="mt-10 -z-1" href="/booking" >
           <button type={"button"} >
             <h1 className=" p-2 bg-white border-4 border-blue-500 font-semibold text-blue-500 rounded-lg">
@@ -225,19 +219,21 @@ export default function Page() {
                   <div className='flex-1 flex justify-center w-1/2'>
                     <div className=' w-full'>
                       <h2 className=' text-[17px] pb-[1px] border'>{servico.selectedProductNane}</h2>
-                      <h2 className=' text-[18px] border'>{servico.rawPrice ? (Number(servico.rawPrice) / 100).toFixed(2) : "0.00"} €</h2>
                       <h2 className=' text-[18px] border'>{servico.selectedPayment}</h2>
+                      <h2 className=' text-[18px] border'>{servico.rawPrice ? (Number(servico.rawPrice) / 100).toFixed(2) : "0.00"} €</h2>
                     </div>
                   </div>
                   <div className='flex-1 flex justify-center w-1/2'>
                     <div className=' w-full'>
+                    <h2 className=' text-[18px] border'>{client.placa}</h2>
+                    <h2 className='text-[18px] border'>
+                      {new Date(servico.data).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}
+                    </h2>
                       <h2 className=' text-[18px] border'>
                       {servico.data && typeof servico.data === 'string' 
                         ? new Date(servico.data).toLocaleDateString('pt-BR') 
                         : 'Data não definida'}
                       </h2>
-                      <h2 className=' text-[18px] border w-full'>{servico.carro}</h2>
-                      <h2 className=' text-[18px] border w-full'>{servico.selectedColor}</h2>
                     </div>
                   </div>
                 </div>
@@ -250,7 +246,7 @@ export default function Page() {
                   >
                     <option value="rawPrice">Price</option>
                     <option value="selectedPayment">Payment</option>
-                    <option value="selectedColor">Color</option>
+                    
                     
                   </select>
                   <input 

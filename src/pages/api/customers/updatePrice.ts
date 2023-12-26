@@ -10,8 +10,7 @@ const prisma = new PrismaClient()
 interface UpdateData {
   rawPrice?: number;
   selectedPayment?: string;
-  selectedColor?: string;
-  selectedModel?: string;
+
 }
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
@@ -22,7 +21,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     res.json(servicos);
   } else if (req.method === 'POST') {
     try {
-      const { rawPrice, selectedPayment, selectedColor, selectedModel } = req.body;
+      const { rawPrice, selectedPayment } = req.body;
 
       // Criando um objeto com os campos que deseja atualizar
       let updateData: UpdateData = {};
@@ -37,13 +36,6 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         updateData.selectedPayment = selectedPayment;
       }
 
-      if (selectedColor !== undefined) {
-        updateData.selectedColor = selectedColor;
-      }
-
-      if (selectedModel !== undefined) {
-        updateData.selectedModel = selectedModel;
-      }
 
       // Realizando a atualização com os campos que foram fornecidos
       const updatedService = await prisma.servicos.update({

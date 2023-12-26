@@ -18,8 +18,7 @@ const checkout = async (req: NextApiRequest, res: NextApiResponse) => {
       selectedProdutPrice,
       nome,
       telefone,
-      selectedModel,
-      selectedColor,
+      placa,
       selectedTime,
       selectedProductDefaultPrice,
       rawPrice,
@@ -29,26 +28,26 @@ const checkout = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
 
-
+console.log(booking,"dados")
     const client = await prisma.clientes.upsert({
-        where: { telefone },
-        update: { nome },
-        create: { nome, telefone },
+        where: { placa },
+        update: { nome, telefone },
+        create: { nome, telefone, placa},
       });
 
     const newService = await prisma.servicos.create({
       data: {
         cliente: { connect: { id: client.id } },
         aguardandoPagamento: true,
-        carro: selectedModel, 
+        
         concluido: false,
         data: new Date(),
         selectedPayment: booking.selectedPayment,
         selectedProductId: booking.selectedProductId,
         selectedProductNane: booking.selectedProductNane,
         selectedProdutPrice: booking.selectedProdutPrice,
-        selectedModel: booking.selectedModel,
-        selectedColor: booking.selectedColor,
+
+        
         selectedTime: booking.selectedTime,
         selectedProductDefaultPrice: booking.selectedProductDefaultPrice,
         rawPrice: booking.rawPrice,
