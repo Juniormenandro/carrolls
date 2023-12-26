@@ -62,7 +62,7 @@ export default function App() {
   const { data: RevenueData, error: isError } = useSWR<RevenueData>(fetchURL ? [fetchURL, token] : null, fetcher, {
     revalidateOnFocus: false,
   });
-  
+  console.log(RevenueData)
   const isLoading = !RevenueData && !isError;
   
   const [isStartDatePickerFocused, setIsStartDatePickerFocused] = React.useState(false);
@@ -190,4 +190,3 @@ export default function App() {
   
   );
 }
-
