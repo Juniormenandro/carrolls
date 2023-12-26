@@ -64,7 +64,7 @@ const BookingPage: NextPage = () => {
   useEffect(() => {
     setBookingData(prevData => ({
       ...prevData,
-      placa: placa, nome:nome, telefone:telefone,
+      placa:placa, nome:nome, telefone:telefone,
     }));
   }, [placa,nome,telefone]);
 

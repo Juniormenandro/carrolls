@@ -166,7 +166,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
             />
             </label>
             <label className="block mb-2">
-              <h1>Enter your car's license plate number</h1>
+              <h1>Enter your car license plate number</h1>
             <input
               style={{
                 width: '100%',
