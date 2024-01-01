@@ -83,7 +83,7 @@ export default function Home() {
       });
   
       const result = await response.json();
-      router.push("/");
+      router.push("/expenses");
     } catch (error) {
       console.error(error);
     }finally {

@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { useRouter } from "next/navigation";
@@ -9,19 +8,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Spinner from "@/components/Spinner/Spinner"; 
 import { fetcher } from '@/utils/fetcher/fetcher';  
 import Link from 'next/link';
-import Button from '@/components/Button/Button';
-
 
 
 interface NetProfit {
-    revenue: number;
-    expense: number;
-    netProfit: number;
-  }
-  
-  interface netProfitData {
-    netProfit: NetProfit;
-  }
+  revenue: number;
+  expense: number;
+  netProfit: number;
+}
+interface netProfitData {
+  netProfit: NetProfit;
+}
   
 
 export default function NetRevenue() {
@@ -43,7 +39,7 @@ export default function NetRevenue() {
     const userToken = localStorage.getItem('token');
     if (!userToken) {
       alert('O usuário não está logado!');
-      router.push("/");
+      router.push("/login");
       return;
     }
     setToken(userToken);

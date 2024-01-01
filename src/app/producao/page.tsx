@@ -7,8 +7,6 @@ import { fetcher } from '@/utils/fetcher/fetcher';
 import { useRouter } from "next/navigation";
 
 
- 
-
 interface servicos {
   data: Date;
   clienteId: string;
@@ -21,7 +19,6 @@ interface servicos {
   concluido: boolean;
   aguardandoPagamento: boolean;
 }
-
 interface Cliente {
   id: string;
   nome: string;
@@ -31,11 +28,7 @@ interface Cliente {
 };
 
 
-
-
-
 export default function Page() {
-
   const [token, setToken] = useState<string | null>(null);
   const [loadingState, setLoadingState] = useState<Record<string, boolean>>({});
   const router = useRouter();

@@ -1,7 +1,6 @@
 
 "use client";
 import React, { Key, useEffect, useState } from 'react';
-
 import useSWR, { mutate } from 'swr';
 import { useRouter } from "next/navigation";
 import Header from '../header';
@@ -29,12 +28,9 @@ interface RevenueData {
 }
 
 
-  
 export default function App() {
-
   const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
-  
   const [startDate, setStartDate] = useState(() => {
     const start = new Date();
     start.setHours(0, 0, 0, 0);
@@ -46,23 +42,22 @@ export default function App() {
     return end;
   });
   
-  
-    useEffect(() => {
-      const userToken = localStorage.getItem('token');
-      if (!userToken) {
-        alert('O usuário não está logado!');
-        router.push("/");
-        return;
-      }
-      setToken(userToken);
-    }, [router]);
+  useEffect(() => {
+    const userToken = localStorage.getItem('token');
+    if (!userToken) {
+      alert('O usuário não está logado!');
+      router.push("/");
+      return;
+    }
+    setToken(userToken);
+  }, [router]);
 
 
   const fetchURL = token ? `${process.env.NEXT_PUBLIC_API_URL}/api/expenses?startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}` : null;  
   const { data: RevenueData, error: isError } = useSWR<RevenueData>(fetchURL ? [fetchURL, token] : null, fetcher, {
     revalidateOnFocus: false,
   });
-  console.log(RevenueData)
+  //console.log(RevenueData)
   const isLoading = !RevenueData && !isError;
   
   const [isStartDatePickerFocused, setIsStartDatePickerFocused] = React.useState(false);

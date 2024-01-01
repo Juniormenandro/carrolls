@@ -101,7 +101,7 @@ const BookingPage: NextPage = () => {
     } catch (error: any) {
       setIsCheckoutLoading(false);
       alert(`An error occured`);
-      //console.log(error);
+      console.log(error);
     }
   };
 

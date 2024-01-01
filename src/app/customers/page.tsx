@@ -8,7 +8,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import useSWR, { mutate } from 'swr';
 import { useRouter } from "next/navigation";
 import React from 'react';
-import Link from 'next/link';
 
 
 interface Servico {
@@ -23,7 +22,6 @@ interface Servico {
   aguardandoPagamento: boolean;
   data:any;
 };
-
 interface Booking {
   id: string;
   selectedDayOfWeek: React.ReactNode;
@@ -32,9 +30,7 @@ interface Booking {
   selectedYear: React.ReactNode;
   selectedTime: React.ReactNode;
   selectedProductDefaultPrice: React.ReactNode;
-
 };
-
 interface Cliente {
   placa: string;
   id: string;
@@ -45,7 +41,6 @@ interface Cliente {
 };
   
 export default function Page() {
-  
   const [token, setToken] = useState<string | null>(null);
   const [loadingState, setLoadingState] = useState<Record<string, boolean>>({});
   const [newPrice, setNewPrice] = useState<string>('');
@@ -58,13 +53,13 @@ export default function Page() {
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        const userToken = localStorage.getItem('token');
-        if (!userToken) {
-            alert('O usuário não está logado!');
-            router.push("/login");
-            return;
-        }
-        setToken(userToken);
+      const userToken = localStorage.getItem('token');
+      if (!userToken) {
+          alert('O usuário não está logado!');
+          router.push("/login");
+          return;
+      }
+      setToken(userToken);
     }
   }, [router]);
 
@@ -99,20 +94,16 @@ export default function Page() {
   }, [token, periodoFiltragem, selectedDate, showReturned]);  // Add 'showReturned' as a dependency
 
 
-
   //const fetchURL = token ? `${process.env.NEXT_PUBLIC_API_URL}/api/customers` : null;
   // Lógica do SWR
   const { data: clientes, error: isError, isLoading } = useSWR<Cliente[]>(fetchURL ? [fetchURL, token] : null, fetcher, {
     revalidateOnFocus: false,
   });
 
-
   if (!fetchURL) {
     return null;  // Isso pode ser substituído por um fallback ou conteúdo padrão.
   }
-
-
-
+  
   async function updateServicePrice(id: string, field: string, value: any) {
     if (!value) return;
     try {

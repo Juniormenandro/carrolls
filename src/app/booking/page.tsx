@@ -4,8 +4,9 @@ import Header from '../header';
 import Spinner from "@/components/Spinner/Spinner";
 import useSWR, { mutate } from 'swr';
 import { fetcher } from '@/utils/fetcher/fetcher';
-
 import { Toaster, toast } from "react-hot-toast";
+
+
 
 interface Booking {
   id: string;
@@ -17,8 +18,6 @@ interface Booking {
   selectedProductDefaultPrice: React.ReactNode;
 
 };
-
-
 interface Cliente {
   id: string;
   nome: string;
@@ -27,31 +26,23 @@ interface Cliente {
 };
 
 
-
-
-
 export default function Page() {
-
   const [token, setToken] = useState<string | null>(null);
   const [loadingState, setLoadingState] = useState<Record<string, boolean>>({});
 
 
-
   useEffect(() => {
     const userToken = localStorage.getItem('token');
-    if (!userToken) {
-      alert('O usuário não está logado!');
-     
-      return;
-    }
-    setToken(userToken);
-    console.log('Token from localStorage:', localStorage.getItem('token'));
-}, []);
-
+      if (!userToken) {
+        alert('O usuário não está logado!');
+        return;
+      }
+      setToken(userToken);
+      //console.log('Token from localStorage:', localStorage.getItem('token'));
+  }, []);
 
 
   const fetchURL = token ? `${process.env.NEXT_PUBLIC_API_URL}/api/book` : null;
-
   const { data: clientes, error: isError, isLoading } = useSWR<Cliente[]>(fetchURL ? [fetchURL, token] : null, fetcher, {
     revalidateOnFocus: false,
   });
@@ -60,7 +51,7 @@ export default function Page() {
     return null;
   }
 
-  
+
   const markAsDone = async (id: string) => {
     setLoadingState(prev => ({ ...prev, [id]: true }));
 
@@ -99,29 +90,23 @@ export default function Page() {
         return newState;
       });
     }
-};
+  };
 
-
-
-
-if (isError) {
-  return <div>Erro detectado: {JSON.stringify(isError)}</div>;
-}
-
-
-if (isLoading) {
-  return (
-    <div className="flex flex-col items-center mt-10">
-      <Spinner />
-    </div>
-  );
-}
+  if (isError) {
+    return <div>Erro detectado: {JSON.stringify(isError)}</div>;
+  }
+  if (isLoading) {
+    return (
+      <div className="flex flex-col items-center mt-10">
+        <Spinner />
+      </div>
+    );
+  }
 
 
   return (
-     <>
-      <Header />
-      
+    <>
+    <Header />
       <h1 style={{ textAlign: "center", padding: "2%", fontSize:"24px" }}>  BOOKING</h1>
       <ul>
         {clientes && clientes?.map(client => (
