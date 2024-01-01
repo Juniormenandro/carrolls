@@ -168,7 +168,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
             />
             </label>
             <label className="block mb-2">
-              <h1 className=" text-2xl">Enter your car license plate number</h1>
+              <h1 className=" text-2xl">Car Plate Number:</h1>
             <input
               style={{
                 width: '100%',
@@ -178,7 +178,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
                 fontSize: '22px',
               }}
               className="block mb-2"
-              type="text"
+              type="number"
               value={placa}
               onChange={(e) => setPlaca(e.target.value)}
               placeholder="type here..."
