@@ -20,6 +20,8 @@ const availableTimeSlots = [
   "04:30 PM",
   "05:00 PM",
   "05:30 PM",
+  "06:00 PM",
+  "06:30 PM",
 ];
 const availablePaymentSlots = [
   "CASH",
@@ -132,7 +134,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
         content = (
           <form onSubmit={handleSubmit}>
             <label className="block mb-2">
-              <h1>Type Your Name:</h1>
+              <h1 className=" text-2xl">Type Your Name:</h1>
               <input
                 key="nome"
                 style={{
@@ -140,7 +142,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
                   padding: '5px',
                   border: '1px solid #2F6B90',
                   borderRadius: '10px',
-                  fontSize: '18px',
+                  fontSize: '22px',
                 }}
                 type="text"
                 value={nome}
@@ -149,14 +151,14 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
               />
             </label>
             <label className="block mb-2">
-              <h1>Enter Your Phone Number:</h1>
+              <h1 className=" text-2xl">Enter Your Phone Number:</h1>
             <input
               style={{
                 width: '100%',
                 padding: '5px',
                 border: '1px solid #2F6B90',
                 borderRadius: '10px',
-                fontSize: '18px',
+                fontSize: '22px',
               }}
               className="block mb-2"
               type="number"
@@ -166,14 +168,14 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
             />
             </label>
             <label className="block mb-2">
-              <h1>Enter your car license plate number</h1>
+              <h1 className=" text-2xl">Enter your car license plate number</h1>
             <input
               style={{
                 width: '100%',
                 padding: '5px',
                 border: '1px solid #2F6B90',
                 borderRadius: '10px',
-                fontSize: '18px',
+                fontSize: '22px',
               }}
               className="block mb-2"
               type="text"
