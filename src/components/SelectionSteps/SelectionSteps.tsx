@@ -178,7 +178,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
                 fontSize: '22px',
               }}
               className="block mb-2"
-              type="number"
+              type="text"
               value={placa}
               onChange={(e) => setPlaca(e.target.value)}
               placeholder="type here..."
