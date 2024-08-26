@@ -25,7 +25,7 @@ const StepButton: React.FC<StepButtonProps> = ({
   selectedProductId,
   selectedPayment,
   selectedTime,
- nome,
+  nome,
   telefone, 
   placa,
   bookingData,

@@ -53,8 +53,9 @@ model clientes {
   servicos  servicos[]
   telefone  String             @unique
   email     String?
-  placa     String             @unique
+  placa     String?                
   Booking   Booking[]
+  
 }
 
 model despesas {

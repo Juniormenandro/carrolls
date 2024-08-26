@@ -144,7 +144,7 @@ const SelectionSteps: React.FC<SelectionStepsProps> = ({
                   borderRadius: '10px',
                   fontSize: '22px',
                 }}
-                type="text"
+                type="text" 
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
                 placeholder="type here..."
