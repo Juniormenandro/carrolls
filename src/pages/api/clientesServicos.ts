@@ -24,7 +24,7 @@ const checkout = async (req: NextApiRequest, res: NextApiResponse) => {
     let client = await prisma.clientes.findUnique({
       where: { telefone }
     });
-
+/*
     // Se cliente encontrado pelo telefone, atualizar a placa
     if (client) {
       client = await prisma.clientes.update({
@@ -45,7 +45,22 @@ const checkout = async (req: NextApiRequest, res: NextApiResponse) => {
         });
       }
     }
+*/
+    // Se cliente encontrado pelo telefone, atualizar a placa
+    if (client) {
+      client = await prisma.clientes.update({
+        where: { id: client.id },
+        data: { placa },
+      });
+    } 
+    // Se não encontrou cliente pelo telefone, criar um novo cliente
+    else {
+      client = await prisma.clientes.create({
+        data: { nome, telefone, placa },
+      });
+    }
 
+    
     // Criar um novo serviço
     const newService = await prisma.servicos.create({
       data: {
